@@ -1,5 +1,6 @@
 package character;
 
+import character1.Support;
 import property.Weapon;
 
 public class Hero {
@@ -182,6 +183,17 @@ public class Hero {
         // 无需对象，直接通过类调用
         Hero.battleWin();
         System.out.println(Hero.itemCapacity);
+        // 向上转型（子类转父类）
+        Hero h = new Hero();
+        ADHero adHero = new ADHero();
+        APHero ap = new APHero();
+        Support s = new Support();
+        //h = adHero;
+        h = s;
+        // 向下转型，需强制转换
+        adHero = (ADHero) h;
+        // adHero = (ADHero) ap; 没有继承关系的类型进行互相转换一定会失败，所以会出现编译错误
+
 
 
 

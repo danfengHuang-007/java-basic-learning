@@ -1,6 +1,7 @@
 package character;
+// 物理攻击
+public class ADHero extends Hero implements AD{
 
-public class ADHero extends Hero{
     // 方法重载
     public void attack(){
         System.out.println(name+" 进行了一次攻击 ，但是不确定打中谁了");
@@ -33,6 +34,11 @@ public class ADHero extends Hero{
         bh.attack(h1, h2);
 
 
+    }
+
+    @Override
+    public void physicAttack() {
+        System.out.println("进行物理攻击");
     }
 }
 
