@@ -13,7 +13,7 @@ public class Support extends Hero{
 
     public static void main(String[] args) {
         Support support = new Support();
-        Hero h1 = new Hero();
+        Hero h1 = new Hero("suman", 100);
 
         support.heal(h1);
         support.heal(h1, 30);

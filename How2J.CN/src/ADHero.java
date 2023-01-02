@@ -21,11 +21,11 @@ public class ADHero extends Hero{
     public static void main(String[] args) {
         ADHero bh = new ADHero();
         bh.name = "赏金猎人";
-        Hero h1 = new Hero();
-        h1.name = "盖伦";
+        Hero h1 = new Hero("盖伦",100);
+       // h1.name = "盖伦";
 
-        Hero h2 = new Hero();
-        h2.name = "提莫";
+        Hero h2 = new Hero("提莫",100);
+        //h2.name = "提莫";
 
         bh.attack(h1);
         bh.attack(h1, h2);
