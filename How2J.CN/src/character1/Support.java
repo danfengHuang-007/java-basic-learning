@@ -1,4 +1,8 @@
-public class Support extends Hero{
+package character1;
+
+import character.Hero;
+
+public class Support extends Hero {
     public void heal(){
         System.out.println("给未知英雄治疗");
     }

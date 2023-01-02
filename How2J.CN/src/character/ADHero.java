@@ -1,3 +1,5 @@
+package character;
+
 public class ADHero extends Hero{
     // 方法重载
     public void attack(){

@@ -1,8 +1,18 @@
+package character;
+
+import property.Weapon;
+
 public class Hero {
-    String name;
-    float hp; // 血值
+    private int id;
+    float maxHP;
+    {
+        maxHP = 200; // 初始化块
+    }
+    public String name;
+    protected float hp; // 血值
     float armor; // 护甲
     int moveSpeed; // 移动速度
+    static String copyRight; // 类属性,静态属性. 如果一个属性声明成类属性，那么所有的对象，都共享这么一个值
     // 有的方法不需要返回值，这个时候就把返回类型设置为void,表示该方法不返回任何值
     void keng(){
         System.out.println("坑队友");
@@ -23,6 +33,18 @@ public class Hero {
     void recovery(float blood){
         hp = hp + blood;
     }
+    // 对象方法，需要有对象才能调用
+    public void die(){
+        hp = 0;
+    }
+    // 静态类方法
+    public static void battleWin(){
+        System.out.println("battle win");
+    }
+
+    public static int itemCapacity = 8; // 声明的时候 初始化
+
+
 /*
     //有参的构造方法
     //默认的无参的构造方法就失效了
@@ -103,10 +125,8 @@ public class Hero {
     public void revive(Hero hero){
         hero.hp = 100;
     }
-
-
-
-
+    public void equip(Weapon w){
+    }
 
     public static void main(String[] args) {
         // create heroes
@@ -144,6 +164,8 @@ public class Hero {
         //Hero teemo = new Hero();
         Hero garen = new Hero("garen", 100);
         Hero teemo = new Hero("teemo", 100);
+        Hero.copyRight = "Suman 是傻逼";
+        //System.out.println(copyRight);
         //teemo.hp = 100;
         //garen.hp = 10;
         //int xueping =100;
@@ -151,7 +173,17 @@ public class Hero {
         garen.attack(teemo,110);
         teemo.revive(teemo); // 提莫复活
         //System.out.println(garen.hp);
-        System.out.println(teemo.hp);
+        //System.out.println(teemo.hp);
+        //System.out.println(garen.copyRight);
+        //garen.copyRight = "Suman 滚你妈的";
+        //System.out.println(teemo.copyRight);
+        garen.die();
+        System.out.println(garen.hp);
+        // 无需对象，直接通过类调用
+        Hero.battleWin();
+        System.out.println(Hero.itemCapacity);
+
+
 
 
 

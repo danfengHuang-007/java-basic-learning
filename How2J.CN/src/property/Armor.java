@@ -1,4 +1,6 @@
-public class Armor extends Item{
+package property;
+
+public class Armor extends Item {
     int ac;
 
     public static void main(String[] args) {
