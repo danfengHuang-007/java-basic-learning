@@ -1,7 +1,7 @@
 package character;
 
 import character1.Support;
-import property.Weapon;
+import property.*;
 
 public class Hero {
     private int id;
@@ -119,14 +119,40 @@ public class Hero {
     }
     // 复活
     public Hero(String heroName, float heroHp){
+        System.out.println("Hero的有一个参数的构造方法 ");
         name = heroName;
         hp = heroHp;
     }
-    public Hero(){}
+    // 无参构造方法
+
+    public Hero(){
+        System.out.println("Hero的无参的构造方法 ");
+    }
+
+
+
+
+
     public void revive(Hero hero){
         hero.hp = 100;
     }
     public void equip(Weapon w){
+    }
+    // 在不实用多态的情况下
+    public void useLifePotion(LifePotion lp){
+        lp.effect();
+    }
+
+    public void useMagicPotion(MagicPotion mp){
+        mp.effect();
+    }
+    // 使用多肽
+    public void useItem(Item i){
+        System.out.println("hero use item");
+        i.effect();
+    }
+    public void kill(Mortal m){
+        m.die();
     }
 
     public static void main(String[] args) {
@@ -163,6 +189,7 @@ public class Hero {
          */
         //Hero garen = new Hero();
         //Hero teemo = new Hero();
+        /*
         Hero garen = new Hero("garen", 100);
         Hero teemo = new Hero("teemo", 100);
         Hero.copyRight = "Suman 是傻逼";
@@ -193,6 +220,49 @@ public class Hero {
         // 向下转型，需强制转换
         adHero = (ADHero) h;
         // adHero = (ADHero) ap; 没有继承关系的类型进行互相转换一定会失败，所以会出现编译错误
+        AD ad = adHero; // 把adHero 转换成AD 接口
+
+        ADHero ad = new ADHero();
+        APHero ap = new APHero();
+        Hero h1 = ad; // 向上转换
+        Hero h2 = ap;
+        System.out.println(h1 instanceof ADHero);
+        System.out.println(h2 instanceof APHero);
+        System.out.println(h1 instanceof Hero);
+
+        ADHero ad = new ADHero();
+        Hero h = ad;
+        AD adi = (AD) h;// 这里h的类型是ADHero, 转换成AD 接口 是向上转换；
+       // APHero ap = (APHero) adi; // ADHero和APHero之间没有继承关系，不能直接强转。
+        LifePotion lp = new LifePotion();
+        MagicPotion mp = new MagicPotion();
+        Hero garen = new Hero();
+        //garen.useLifePotion(lp);
+        //garen.useMagicPotion(mp);
+        garen.useItem(lp);
+        garen.useItem(mp);
+
+        Hero garen = new Hero();
+        ADHero ad = new ADHero();
+        APHero ap = new APHero();
+        ADAPHero adap = new ADAPHero();
+        garen.kill(ad);
+        garen.kill(ap);
+        garen.kill(adap);
+
+         */
+        //Hero.battleWin();
+        //new Hero();
+        Hero garen = new ADHero();
+        System.out.println(garen.toString());
+        System.out.println(garen); // 直接打印对象就是打印它的toString()返回值;
+
+
+
+
+
+
+
 
 
 
