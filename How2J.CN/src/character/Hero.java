@@ -154,6 +154,17 @@ public class Hero {
     public void kill(Mortal m){
         m.die();
     }
+//    public void finalize(){
+//        System.out.println("这个英雄正在被回收");
+//    }
+    // 当两个对象的hp 相同时，这两个对象相等:
+    public boolean equals(Object o){
+        if (o instanceof Hero){
+            Hero h = (Hero) o;
+            return this.hp == h.hp;
+        }
+        return false;
+    }
 
     public static void main(String[] args) {
         // create heroes
@@ -253,9 +264,25 @@ public class Hero {
          */
         //Hero.battleWin();
         //new Hero();
-        Hero garen = new ADHero();
-        System.out.println(garen.toString());
-        System.out.println(garen); // 直接打印对象就是打印它的toString()返回值;
+        //Hero garen = new ADHero();
+        //System.out.println(garen.toString());
+        //System.out.println(garen); // 直接打印对象就是打印它的toString()返回值;
+//        Hero h;
+//        for (int i=0;i<10000;i++){
+//            h = new Hero();
+//        }
+        Hero h1 = new Hero();
+        h1.hp = 300;
+        Hero h2 = new Hero();
+        h2.hp = 400;
+        Hero h3 = new Hero();
+        h3.hp = 300;
+        System.out.println(h1==h2);
+        System.out.println(h1==h3);
+        //System.out.println(h1.equals(h2));
+        //System.out.println(h1.equals(h3));
+
+
 
 
 
