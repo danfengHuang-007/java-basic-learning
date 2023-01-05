@@ -23,6 +23,7 @@ public class Item {
         }
         return false;
     }
+    //
 
     public static void main(String[] args) {
         /*
@@ -55,7 +56,7 @@ public class Item {
 //        i1.effect();
 //        System.out.println("i2也是Item类型，执行effect打印:");
 //        i2.effect();
-         */
+
         Item i =new Item();
         Item i2 = new Item();
         Item i3 = new Item();
@@ -68,6 +69,11 @@ public class Item {
         System.out.println(i.toString());
         System.out.println(i.equals(i2));
         System.out.println(i.equals(i3));
+        */
+
+
+
+
 
 
 

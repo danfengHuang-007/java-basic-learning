@@ -13,6 +13,33 @@ public class Hero {
     protected float hp; // 血值
     float armor; // 护甲
     int moveSpeed; // 移动速度
+    // 非静态内部类，只有在外部类对象存在的时候 才有意义；
+    class BattleScore{
+        int kill;
+        int die;
+        int assist;
+        public void legendary(){
+            if(kill>=8){
+                System.out.println(name+"超神");
+            }else {
+                System.out.println(name+"尚未超神");
+            }
+        }
+    }
+    // 静态内部类不需要外部类实例化为基础
+    static class EnemyCrystal{
+        int hp = 500;
+        // 如果水晶的血量为0，则胜利
+        public void checkIfVictory(){
+            if (hp==0){
+                Hero.battleWin();
+                // 静态内部类不能访问外部类的属性
+                //System.out.println(name+"Win");
+            }
+        }
+
+    }
+    public static  final int totalItemNumber = 6;
     static String copyRight; // 类属性,静态属性. 如果一个属性声明成类属性，那么所有的对象，都共享这么一个值
     // 有的方法不需要返回值，这个时候就把返回类型设置为void,表示该方法不返回任何值
     void keng(){
@@ -128,10 +155,6 @@ public class Hero {
     public Hero(){
         System.out.println("Hero的无参的构造方法 ");
     }
-
-
-
-
 
     public void revive(Hero hero){
         hero.hp = 100;
@@ -271,6 +294,7 @@ public class Hero {
 //        for (int i=0;i<10000;i++){
 //            h = new Hero();
 //        }
+        /*
         Hero h1 = new Hero();
         h1.hp = 300;
         Hero h2 = new Hero();
@@ -279,8 +303,27 @@ public class Hero {
         h3.hp = 300;
         System.out.println(h1==h2);
         System.out.println(h1==h3);
+
+         */
         //System.out.println(h1.equals(h2));
         //System.out.println(h1.equals(h3));
+        final Hero h1;
+        h1 = new Hero();
+        h1.hp=5;
+        //h1 = new Hero();
+        Hero garen = new Hero();
+        garen.name = "盖伦";
+        // 实例化一个内部类，只有在外部类对象存在的情况下才可以;
+        BattleScore battleScore = garen. new BattleScore();
+        battleScore.kill = 9;
+        battleScore.kill = 1;
+        //battleScore.legendary(); // 盖伦超神
+        //battleScore.legendary(); // 盖伦尚未超神
+        // 实例化静态内部类
+        Hero.EnemyCrystal enemyCrystal = new EnemyCrystal();
+        enemyCrystal.hp =0;
+        enemyCrystal.checkIfVictory();
+
 
 
 
