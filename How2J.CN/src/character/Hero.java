@@ -1,6 +1,7 @@
 package character;
 
 import character1.Support;
+import exception.EnemyHeroIsDeadException;
 import property.*;
 
 public class Hero {
@@ -141,9 +142,18 @@ public class Hero {
         //回血完毕后，血瓶=0
         xp = 0;
     }
+    // attack 如果对方血量为0，则抛出异常;
+    public void attackHero(Hero h) throws EnemyHeroIsDeadException{
+        if (h.hp==0){
+            throw new EnemyHeroIsDeadException(h.name+"已经挂了,不需要施放技能");
+        }
+    }
+    /*
     public void attack(Hero hero, int damage){
         hero.hp = hero.hp - damage;
     }
+
+     */
     // 复活
     public Hero(String heroName, float heroHp){
         System.out.println("Hero的有一个参数的构造方法 ");

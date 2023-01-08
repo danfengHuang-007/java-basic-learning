@@ -4,6 +4,7 @@ import java. io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class TestException {
+
     /*
     public static void main(String[] args) throws FileNotFoundException {
         File f = new File("d:/LOL.exe");
@@ -12,10 +13,23 @@ public class TestException {
 
      */
     public static void main(String[] args) {
+
+        //method1();
+        /*
+        File f = new File("d:/LOL.exe");
+        try{
+            new FileInputStream(f);
+            // 使用throwable 进行异常捕捉
+        }catch (Throwable t){
+            t.printStackTrace();
+        }
+
+        /*
         StringBuffer sb = new StringBuffer();
         for (int i =0;i<Integer.MAX_VALUE;i++){
             sb.append('a');
         }
+         */
         // ArithmeticException
         //int a = 5/0;
         // ArrayIndexOutOfBoundsException
@@ -46,10 +60,17 @@ public class TestException {
 
         }
         finally {
-
-
          */
+        try{
+            method();
+        } catch (Throwable throwable) {
+            System.out.println("throwable");
+            throwable.printStackTrace();
+        }
 
+    }
+    public static void method() throws Throwable{ // 可以正常抛出throwable，但是也需要通过throwable进行catch
+        throw new Throwable();
     }
     /*
     private static int method(){
